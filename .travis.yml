@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+- '6.10'
+
+env:
+  global:
+    - SLS_DEBUG=true
+
+before_install:
+  - npm i -g serverless
+install:
+  - npm i
+  - serverless env --attribute W3W_API_KEY --value $W3W_API_KEY --stage dev
+  - serverless env --attribute W3W_API_KEY --value $W3W_API_KEY --stage prod
+
+after_script: ./deploy.sh
