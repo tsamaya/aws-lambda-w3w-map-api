@@ -57,7 +57,7 @@ open your browser with [http://localhost:3000/what3words/map?addr=launch.posts.w
 
 Create a boilerplate for aws-nodejs
 
-    $ serverless create --template aws-nodejs --path serverless create --template aws-nodejs --path aws-lambda-w3w-map-api
+    $ serverless create --template aws-nodejs --path aws-lambda-w3w-map-api
 
     $ cd aws-lambda-w3w-map-api/
 
