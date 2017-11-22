@@ -2,6 +2,10 @@
 
 [![Build Status](https://travis-ci.org/tsamaya/aws-lambda-w3w-map-api.svg?branch=master)](https://travis-ci.org/tsamaya/aws-lambda-w3w-map-api)
 
+This repository shows how to extend [what3words API](https://what3words.com) adding a API method returning a webmap.
+
+After the quick start the how-to section describes step by step how to create the same kind of AWS lambda function and how to deploy it via [travis-ci](https://travis-ci.org) build.
+
 ## Quick start
 
 ### Prerequisites
