@@ -1,0 +1,33 @@
+{
+  "name": "aws-lambda-w3w-map-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "lint": "eslint .",
+    "test": "npm run lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tsamaya/aws-lambda-w3w-map-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tsamaya/aws-lambda-w3w-map-api/issues"
+  },
+  "homepage": "https://github.com/tsamaya/aws-lambda-w3w-map-api#readme",
+  "dependencies": {
+    "axios": "^0.17.1",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.7"
+  },
+  "devDependencies": {
+    "eslint": "^4.11.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "serverless-env-generator": "^1.1.2",
+    "serverless-offline": "^3.16.0"
+  }
+}
