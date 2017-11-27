@@ -7,3 +7,6 @@ jspm_packages
 
 # environment file containing API key
 environment.yml
+.env
+
+tmp/

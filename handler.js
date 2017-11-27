@@ -6,6 +6,10 @@ const W3W_API_ENDPOINT = 'https://api.what3words.com/v2';
 const W3W_GEOCODE_URL = `${W3W_API_ENDPOINT}/forward`;
 const W3W_REV_GEOCODE_URL = `${W3W_API_ENDPOINT}/reverse`;
 
+const LEAFLET_TEMPLATE = './templates/leafletjs.ejs';
+const ESRI_TEMPLATE = './templates/esrijs.ejs';
+const GOOGLE_TEMPLATE = './templates/google.ejs';
+
 /**
  * [loadTemplate description]
  * @param  {[type]}   data     [description]
@@ -13,22 +17,25 @@ const W3W_REV_GEOCODE_URL = `${W3W_API_ENDPOINT}/reverse`;
  * @return {[type]}            [description]
  */
 const loadTemplate = (data, callback) => {
-  const filename = './templates/leafletjs.ejs';
+  let filename;
+  if (data.type && data.type === 'esri') {
+    filename = ESRI_TEMPLATE;
+  } else if (data.type && data.type === 'google') {
+    filename = GOOGLE_TEMPLATE;
+  } else {
+    filename = LEAFLET_TEMPLATE;
+  }
   const options = {};
   ejs.renderFile(filename, data, options, (err, str) => {
     if (err) {
       callback(null, {
         statusCode: 400,
-        // headers: {
-        //   'Access-Control-Allow-Origin': '*' // Required for CORS support to work
-        // },
         body: JSON.stringify(err)
       });
     } else {
       callback(null, {
         statusCode: 200,
         headers: {
-          // 'Access-Control-Allow-Origin': '*', // Required for CORS support to work
           'Content-Type': 'text/html'
         },
         body: str
@@ -95,16 +102,15 @@ module.exports.what3wordsMap = (event, context, callback) => {
     const data = {
       lat: response.data.geometry.lat,
       lng: response.data.geometry.lng,
-      w3w: response.data.words
+      w3w: response.data.words,
+      type: event.queryStringParameters.type,
+      googleKey: event.queryStringParameters.googleKey
     };
     loadTemplate(data, callback);
   }).catch((err) => {
     // console.log(err);
     callback(null, {
       statusCode: 400,
-      // headers: {
-      //   'Access-Control-Allow-Origin': '*' // Required for CORS support to work
-      // },
       body: JSON.stringify(err.data)
     });
   });

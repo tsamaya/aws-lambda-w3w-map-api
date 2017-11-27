@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <title>what3words: <%= w3w %></title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no">
+
+  <link rel="shortcut icon" type="image/x-icon" href="https://map.what3words.com/favicon.ico" />
+
+  <link rel="stylesheet" href="https://js.arcgis.com/4.5/esri/css/main.css">
+  <script src="https://js.arcgis.com/4.5/"></script>
+  <style>
+    html,
+    body,
+    #map {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100%;
+    }
+    #w3w-wrapper {
+      position: absolute;
+      left: 10px;
+      bottom: 50px;
+      background-color: #fff;
+    }
+    #w3w {
+      padding-left: 10px;
+      padding-right: 10px;
+      color: #000;
+      font-family: sans-serif;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="map"></div>
+  <div id="w3w-wrapper"><div id="w3w"><%= w3w %></div></div>
+  <script>
+    // Load the Map and MapView modules
+    require(['esri/Map',
+             'esri/views/MapView',
+             'esri/geometry/Point',
+             'esri/Graphic',
+             'esri/layers/GraphicsLayer',
+             'esri/symbols/PictureMarkerSymbol',
+             'dojo/domReady!'],
+
+    function(Map, MapView, Point, Graphic, GraphicsLayer,
+             PictureMarkerSymbol) {
+      // Create a Map instance
+      var myMap = new Map({
+        basemap: 'streets'
+      });
+      // Create a MapView instance (for 2D viewing) and reference the map instance
+      var view = new MapView({
+        container: 'map',
+        map: myMap,
+        zoom: 13,
+        center: [<%= lng %>, <%= lat %>]
+      });
+      var w3wmarkerSymbol = new PictureMarkerSymbol({
+        url: 'https://map.what3words.com/images/map/marker-border.png',
+        width: 45,
+        height: 45,
+        yoffset: 45/2
+      });
+      var location = new Point({
+        latitude: <%= lat %>,
+        longitude: <%= lng %>
+      });
+      var markerLayer = new GraphicsLayer();
+      myMap.add(markerLayer);
+      var graphic = new Graphic(location, w3wmarkerSymbol);
+      markerLayer.add(graphic);
+    });
+  </script>
+
+</body>
+
+</html>

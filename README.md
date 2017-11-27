@@ -46,7 +46,15 @@ don't forget for the production environment to add the according stage
 
 	$ sls offline start
 
-open your browser with [http://localhost:3000/what3words/map?addr=launch.posts.wedge](http://localhost:3000/what3words/map?addr=launch.posts.wedge)
+open your browser with :
+
+- [http://localhost:3000/what3words/map?addr=launch.posts.wedge](http://localhost:3000/what3words/map?addr=launch.posts.wedge) returns a map using [OpenStreetMap](https://www.openstreetmap.org) and [LeafletJS](http://leafletjs.com/)
+
+- [http://localhost:3000/what3words/map?addr=launch.posts.wedge&type=esri](http://localhost:3000/what3words/map?addr=launch.posts.wedge&type=esri) returns a map using [esriJS](https://js.arcigs.com) with the `streets` basemap
+
+- [http://localhost:3000/what3words/map?addr=launch.posts.wedge&type=google&googleKey=YOUR-GOOGLE-KEY](http://localhost:3000/what3words/map?addr=launch.posts.wedge&type=google&googleKey=YOUR-GOOGLE-KEY) returns a map using [Google Maps](https://developers.google.com/maps/documentation/javascript/), you need to provide your own Google API key
+
+
 
 ### Quick deploy
 
