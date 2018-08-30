@@ -58,7 +58,7 @@ open your browser with :
 
 ### Quick deploy
 
-	$ sls deploy
+	$ sls [--aws-profile your-aws-profile] deploy
 
 
 # How to
