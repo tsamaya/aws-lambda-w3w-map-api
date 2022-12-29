@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/tsamaya/aws-lambda-w3w-map-api#readme",
   "dependencies": {
-    "axios": "^0.17.1",
+    "axios": "^0.21.2",
     "dotenv": "^4.0.0",
     "ejs": "^2.5.7"
   },
